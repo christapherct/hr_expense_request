@@ -14,6 +14,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'views/hr_expense_request_view.xml'
     ],
 
     'installable': True,
