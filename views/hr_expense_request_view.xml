@@ -19,6 +19,12 @@
             <form>
                 <sheet>
                     <header>
+                        <button string="Submit" type="object" name="action_submit"
+                                class="btn-primary" invisible="state != 'draft'"/>
+                        <button string="Approve" type="object" name="action_approve"
+                                class="btn-primary" invisible="state != 'submitted'"/>
+                        <button string="Reject" type="object" name="action_reject"
+                                class="btn-secondary" invisible="state == 'rejected'"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <div class="oe_title">
@@ -46,7 +52,7 @@
     <record id="hr_expense_request_sequence" model="ir.sequence">
         <field name="name">hr.expense.request.sequence</field>
         <field name="code">hr.expense.request</field>
-        <field name="prefix">hrexp/</field>
+        <field name="prefix">HREXP/</field>
         <field eval="4" name="padding"/>
         <field name="company_id" eval="False"/>
     </record>
@@ -59,18 +65,10 @@
         <field name="target">current</field>
     </record>
 
-<!--    <menuitem id="customer_type_master_menu"-->
-<!--              name="Customer Type Master"-->
-<!--              parent="account.menu_analytic_accounting"-->
-<!--              action="hr_expense_request.action_hr_expense_request"-->
-<!--              sequence="100"-->
-<!--    />-->
-
     <menuitem id="menu_employee_expense_root"
               name="Employee Expenses"
               sequence="10" />
 
-        <!-- Submenu for Expense Requests -->
         <menuitem id="menu_expense_request"
                   name="Expense Requests"
                   parent="menu_employee_expense_root"

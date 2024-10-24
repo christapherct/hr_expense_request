@@ -1,0 +1,80 @@
+<odoo>
+    <record id="view_hr_travel_request_tree" model="ir.ui.view">
+        <field name="name">hr.travel.request.tree</field>
+        <field name="model">hr.travel.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <field name="travel_type"/>
+                <field name="request_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_travel_request_form" model="ir.ui.view">
+        <field name="name">hr.travel.request.form</field>
+        <field name="model">hr.travel.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button string="Submit" type="object" name="action_submit"
+                                class="btn-primary" invisible="state != 'draft'"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="from_date"/>
+                            <field name="accommodation_required"/>
+                            <field name="request_type"/>
+                            <field name="airfare_attachment" invisible="request_type != 'reimbursement'"/>
+                            <field name="airfare_amount" invisible="request_type != 'reimbursement'"/>
+                            <field name="other_attachment" invisible="request_type != 'reimbursement'"/>
+                            <field name="other_amount" invisible="request_type != 'reimbursement'"/>
+                            <field name="amount" invisible="request_type != 'prepaid'"/>
+                            <field name="meeting_attachment" invisible="request_type != 'prepaid'"/>
+                        </group>
+                        <group>
+                            <field name="to_date"/>
+                            <field name="employee_id"/>
+                            <field name="department_id"/>
+                            <field name="travel_type"/>
+                            <field name="kit_allowance_needed" invisible="travel_type != 'international'"/>
+                            <field name="accommodation_attachment" invisible="request_type != 'reimbursement'"/>
+                            <field name="accommodation_amount" invisible="request_type != 'reimbursement'"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_travel_request_sequence" model="ir.sequence">
+        <field name="name">hr.travel.request.sequence</field>
+        <field name="code">hr.travel.request</field>
+        <field name="prefix">HRTRVL/</field>
+        <field eval="4" name="padding"/>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="action_hr_travel_request" model="ir.actions.act_window">
+        <field name="name">Travel Request</field>
+        <field name="res_model">hr.travel.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_travel_request"
+              name="Travel Requests"
+              parent="menu_employee_expense_root"
+              action="hr_expense_request.action_hr_travel_request"
+              sequence="10" />
+
+</odoo>
