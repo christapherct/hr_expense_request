@@ -10,7 +10,7 @@
         """,
     'author': 'Christapher Thomas',
     'depends': [
-        'base', 'hr', 'hr_payroll', 'mail', 'report_xlsx'
+        'base', 'hr', 'mail',
     ],
     'data': [
         'security/ir.model.access.csv',
