@@ -15,7 +15,9 @@
     'data': [
         'security/ir.model.access.csv',
         'views/hr_expense_request_view.xml',
-        'views/hr_travel_request_view.xml'
+        'views/hr_travel_request_view.xml',
+        'views/hr_education_request_view.xml',
+        'views/child_education_master_view.xml'
     ],
 
     'installable': True,

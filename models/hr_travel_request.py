@@ -35,15 +35,20 @@ class HRTravelRequest(models.Model):
         ('approved', 'Approved'),
         ('rejected', 'Rejected')
     ], string="Status", default='draft')
+    expense_request_id = fields.Many2one('hr.expense.request', string="Expense Request")
+    expense_type = fields.Selection(related="expense_request_id.expense_type")
+    # expense_type = fields.Many2one('hr.expense.type', string="Expense Type", required=True,
+    #                                default=lambda self: self.env['hr.expense.type'].search([('name', '=', 'Travel')],
+    #                                                                                        limit=1).id)
 
-    @api.model
-    def create(self, vals):
-        if vals.get('name', _('New')) == _('New'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('hr.travel.request') or _('New')
-        if 'expense_type' not in vals:
-            # You can set a default value for expense_type based on your requirement
-            vals['expense_type'] = self.env['hr.expense.type'].search([('name', '=', 'Travel')], limit=1).id
-        return super(HRTravelRequest, self).create(vals)
+    # @api.model
+    # def create(self, vals):
+    #     if vals.get('name', _('New')) == _('New'):
+    #         vals['name'] = self.env['ir.sequence'].next_by_code('hr.travel.request') or _('New')
+    #     if 'expense_type' not in vals:
+    #         # You can set a default value for expense_type based on your requirement
+    #         vals['expense_type'] = self.env['hr.expense.type'].search([('name', '=', 'Travel')], limit=1).id
+    #     return super(HRTravelRequest, self).create(vals)
 
     def action_submit(self):
         self.state = 'submitted'

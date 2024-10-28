@@ -1,4 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_hr_expense_request,name.hr.expense.request,model_hr_expense_request,,1,1,1,1
 access_hr_travel_request,name.hr.travel.request,model_hr_travel_request,,1,1,1,1
+access_hr_education_request,name.hr.education.request,model_hr_education_request,,1,1,1,1
+access_child_education_master,name.child.education.master,model_child_education_master,,1,1,1,1
 

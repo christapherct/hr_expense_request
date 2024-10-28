@@ -69,9 +69,9 @@
               name="Employee Expenses"
               sequence="10" />
 
-        <menuitem id="menu_expense_request"
+        <menuitem id="menu_expense_request_layer"
                   name="Expense Requests"
-                  parent="menu_employee_expense_root"
+                  parent="hr_expense_request.menu_employee_expense_root"
                   action="hr_expense_request.action_hr_expense_request"
                   sequence="10" />
 

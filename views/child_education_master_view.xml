@@ -1,0 +1,20 @@
+<odoo>
+    <record id="action_child_education_master" model="ir.actions.act_window">
+        <field name="name">Child Education Request</field>
+        <field name="res_model">child.education.master</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="menu_configuration_root"
+              name="Configuration"
+              parent="hr_expense_request.menu_employee_expense_root"
+              sequence="20" />
+
+        <menuitem id="menu_education_child_master"
+                  name="Education Child Master"
+                  parent="hr_expense_request.menu_configuration_root"
+                  action="hr_expense_request.action_child_education_master"
+                  sequence="05" />
+
+</odoo>
